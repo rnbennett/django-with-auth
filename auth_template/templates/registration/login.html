@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block breadcrumbs %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'index' %}">{% trans 'Home' %}</a><span class="divider">/</span></li>
+        <li class="active">{% trans 'Log In' %}</li>
+    </ul>
+{% endblock %}
+
+{% block title %}{% trans 'Log In' %}{% endblock %}
+
+{% block content %}
+
+    <h2>{% trans 'Log In' %}</h2>
+
+    {% if form.errors %}
+        <div class="alert alert-error"><i class="icon-warning-sign"></i> {% trans 'You entered an invalid username and password. Please try again.' %}</div>
+    {% endif %}
+
+    <hr>
+
+    <form class="form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+        <fieldset>
+            {% csrf_token %}
+            <div class="control-group{% if form.username.errors %} error{% endif %}">
+                <label class="control-label" for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-user"></i></span>
+                        {{ form.username }}
+                    </div>
+                </div>
+            </div>
+            <div class="control-group{% if form.password.errors %} error{% endif %}">
+                <label class="control-label" for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-lock"></i></span>
+                        {{ form.password }}
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input class="btn btn-large btn-primary" type="submit" value="{% trans 'Log In' %}" />
+                </div>
+            </div>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </fieldset>
+
+        <script type="text/javascript">document.getElementById("{{ form.username.id_for_label }}").focus();</script>
+    </form>
+
+    <p>{% trans 'New User?' %} <a href="{% url 'register' %}">{% trans 'Sign up now!' %}</a></p>
+    <p>{% trans 'Forgot password?' %} <a href="{% url 'password_reset' %}">{% trans 'Click here to reset it.' %}</a></p>
+
+{% endblock %}

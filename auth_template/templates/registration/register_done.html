@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block breadcrumbs %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'index' %}">{% trans 'Home' %}</a><span class="divider">/</span></li>
+        <li class="active">{% trans 'Register' %}</li>
+    </ul>
+{% endblock %}
+
+{% block title %}Account Registration Complete{% endblock %}
+
+{% block content %}
+    <h2>Account Registration Complete!</h2>
+
+    <hr>
+
+    <p>
+        <a href="{% url 'account' %}">Click here to continue to My Account.</a>
+    </p>
+{% endblock %}

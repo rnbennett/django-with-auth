@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+        <p><a href="{%  url 'password_change' %}">Change Password</a></p>
+    {% else %}
+        <p>Welcome, new user. Please log in.</p>
+    {% endif %}
+{% endblock %}
