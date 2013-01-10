@@ -29,5 +29,8 @@ To use:
     $ cd auth_template
     $ ./manage.py syncdb      # You will get errors here - ignore them
     $ ./manage.py migrate
+    $ ./manage.py runserver
+
+Use your favorite search and replace tool to rename the project.
 
 Licensed under the [MIT License](http://opensource.org/licenses/MIT). See LICENSE.md for more information.
