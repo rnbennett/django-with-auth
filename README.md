@@ -23,11 +23,11 @@ Requires [pip](http://pypi.python.org/pypi/pip), [virtualenv](http://pypi.python
 
 To use:
 
-  $ virtualenv env
-  $ source ./env/bin/activate
-  $ pip install -r requirements.txt
-  $ cd auth_template
-  & ./manage.py syncdb      # You will get errors here - ignore them
-  & ./manage.py migrate
+    $ virtualenv env
+    $ source ./env/bin/activate
+    $ pip install -r requirements.txt
+    $ cd auth_template
+    $ ./manage.py syncdb      # You will get errors here - ignore them
+    $ ./manage.py migrate
 
 Licensed under the [MIT License](http://opensource.org/licenses/MIT). See LICENSE.md for more information.
